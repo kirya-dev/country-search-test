@@ -1,0 +1,40 @@
+<html>
+<head>
+	<title>Frontend Test</title>
+</head>
+<body>
+
+<!-- content... -->
+<div id="app">
+
+	<form class="search-form" onsubmit="return false;" v-on:submit="doQuery">
+		<input type="text" v-model="queryText">
+		<input type="submit">
+	</form>
+
+	<div>Your query string: {{ queryText }}</div>
+
+	<div v-if="foundedCountries.length">
+		<ol>
+			<country-item
+				v-for="item in foundedCountries"
+				v-bind:info="item">
+			</country-item>
+		</ol>
+	</div>
+	<div v-else>No country found</div>
+
+	<country-info v-if="curCountry != null" v-bind:info="curCountry"></country-info>
+
+</div>
+<!-- end ontent... -->
+
+
+<!-- script -->
+<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+<!-- <script src="vue.js"></script> -->
+<script src="my.js"></script>
+<!-- end script -->
+
+</body>
+</html>
